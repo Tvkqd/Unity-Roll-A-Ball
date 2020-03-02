@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Text countText;
     public Text winText;
+    public Vector3 LastVelocity = Vector3.zero;
 
     private Rigidbody rb;
     private int count;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         rb.AddForce(movement * speed);
+        LastVelocity = rb.velocity;
     }
 
     private void OnTriggerEnter(Collider other)
