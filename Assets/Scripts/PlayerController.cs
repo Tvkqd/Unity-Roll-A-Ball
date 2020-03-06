@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private int count;
+    private int winCount;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
         count = 0;
         SetCountText();
         winText.text = "";
+        winCount = GameObject.FindGameObjectsWithTag("Pick Up").Length;
     }
     private void FixedUpdate()
     {
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        if (count >= winCount)
         {
             winText.text = "You Win!";
         }
